@@ -1,5 +1,6 @@
 package Views;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,18 +16,24 @@ public class MenuPrincipal extends JFrame {
     protected JButton btnOk, btnCancelar;
 
     public MenuPrincipal() {
+        // crear ventana
         setLayout(null);
-        this.label1 = new JLabel("Seleccione una opcion de conversión");
-        this.label1.setBounds(20, 20, 300, 30);
+        setTitle("Menu");
+        setBounds(100, 100, 350, 120);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        label1 = new JLabel("Seleccione una opcion de conversión");
+        label1.setBounds(20, 20, 300, 30);
         add(this.label1);
 
-        // crear Combo
-        this.combo1 = new JComboBox<String>();
-        this.combo1.setBounds(20, 50, 300, 30);
+        combo1 = new JComboBox<String>();
+        combo1.setBounds(20, 50, 300, 30);
         add(this.combo1);
-        this.combo1.addItem("Convestor de Monedas");
-        this.combo1.addItem("Convesor de Temperatura");
-        this.combo1.addItem("Convesor de Medidas");
+        combo1.setModel(new DefaultComboBoxModel<>(new String[]{
+            "Convestor de Monedas",
+            "Convesor de Temperatura",
+            "Convesor de Medidas"
+        }));
     }
 
 }
