@@ -33,11 +33,11 @@ public class MenuPrincipal {
         } else {
             Input input = new Input();
             if (seleccionar.equals(opcionesMenuPrincipal[1])) {
-                input.EjecutarConvertidor(1);
+                input.ejecutarConvertidor(1);
             } else if (seleccionar.equals(opcionesMenuPrincipal[2])) {
-                input.EjecutarConvertidor(2);
+                input.ejecutarConvertidor(2);
             } else if (seleccionar.equals(opcionesMenuPrincipal[3])) {
-                input.EjecutarConvertidor(3);
+                input.ejecutarConvertidor(3);
             }
         }
     }

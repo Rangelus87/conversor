@@ -21,13 +21,21 @@ public class Input {
     }
 
     // comprobar y ejecutar el convertidor correspondiente
-    protected void EjecutarConvertidor(int i) {
+    protected void ejecutarConvertidor(int i) {
 
         while (entrada != null && !isNumber(entrada)) {
             entrada = JOptionPane.showInputDialog(null, "NUMERO INVALIDO! \n ingrese un valor numerico");
         }
         if (entrada == null) {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
+        } else {
+            if (i == 1) {
+                TipoDeCambio tipoDeCambio = new TipoDeCambio();
+            } else if (i == 2) {
+                ConversorTemperatura conversorTemperatura = new ConversorTemperatura();
+            } else if (i == 3) {
+                ConversorMedidas conversorMedidas = new ConversorMedidas();
+            }
         }
 
     }

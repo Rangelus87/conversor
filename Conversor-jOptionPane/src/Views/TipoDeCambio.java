@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public class TipoDeCambio {
 
     private Object[] opcionesTipoCambio;
+    private Object seleccionar;
 
     public TipoDeCambio() {
         opcionesTipoCambio = new Object[]{
@@ -21,7 +22,7 @@ public class TipoDeCambio {
             "Won Coreano a Pesos"
         };
 
-        Object seleccionar = JOptionPane.showInputDialog(
+        JOptionPane.showInputDialog(
                 null,
                 "Tipo de Cambio: ",
                 "Monedas",
@@ -29,5 +30,27 @@ public class TipoDeCambio {
                 null, opcionesTipoCambio,
                 opcionesTipoCambio[0]
         );
+    }
+
+    // obtener la opvion seleccionada por el usuario
+    private int ObtenerSeleccion() {
+
+        for (int i = 1; i > opcionesTipoCambio.length; i++) {
+            if (seleccionar.equals(opcionesTipoCambio[i])) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    private void pesoDolar(int num) {
+        if (num != 0) {
+            int conversion = num * 545;
+            String mensaje = String.valueOf(conversion);
+            JOptionPane.showMessageDialog(null, conversion);
+        } else {
+            TipoDeCambio tipoDeCambio = new TipoDeCambio();
+            tipoDeCambio.comprobarSeleccion();
+        }
     }
 }
