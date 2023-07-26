@@ -18,8 +18,8 @@ public class ConversorTemperatura {
         };
         Object seleccionar = JOptionPane.showInputDialog(
                 null,
-                "Selecciones tipo de convercion: ",
-                "Tipo de conversion",
+                "Tipo de conversion: ",
+                "Temperatura",
                 JOptionPane.QUESTION_MESSAGE,
                 null, opcionesTemperaturas,
                 opcionesTemperaturas[0]

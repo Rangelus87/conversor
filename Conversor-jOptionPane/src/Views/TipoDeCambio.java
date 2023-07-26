@@ -23,8 +23,8 @@ public class TipoDeCambio {
 
         Object seleccionar = JOptionPane.showInputDialog(
                 null,
-                "Selecciones tipo de cambio: ",
-                "Tipo de Cambio",
+                "Tipo de Cambio: ",
+                "Monedas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, opcionesTipoCambio,
                 opcionesTipoCambio[0]

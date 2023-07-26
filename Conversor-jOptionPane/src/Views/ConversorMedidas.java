@@ -24,8 +24,8 @@ public class ConversorMedidas {
         };
         Object seleccionar = JOptionPane.showInputDialog(
                 null,
-                "Medidas: ",
-                "Tipo de conversion",
+                "Tipo de Cambio: ",
+                "Medidas",
                 JOptionPane.QUESTION_MESSAGE,
                 null, opcionesMedidas,
                 opcionesMedidas[0]
