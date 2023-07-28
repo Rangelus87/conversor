@@ -3,8 +3,6 @@ package Test;
 import Views.ConversorMedidas;
 import Views.ConversorTemperatura;
 import Views.ConvesorMonedas;
-import Views.Input;
-import Views.MenuPrincipal;
 import Views.ValorConversion;
 
 public class Test {
@@ -25,10 +23,6 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        menuPrincipal.comprobarSeleccion();
-        Input input = new Input();
-        Test test = new Test();
-        test.llamarConvertidores(menuPrincipal.comprobarSeleccion(), input.getEntrada());
+
     }
 }
