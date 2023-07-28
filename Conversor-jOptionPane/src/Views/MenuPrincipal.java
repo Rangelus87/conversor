@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class MenuPrincipal {
 
-    protected Object[] opcionesMenuPrincipal;
-    protected Object seleccionar;
+    private Object[] opcionesMenuPrincipal;
+    private Object seleccionar;
 
     public MenuPrincipal() {
         opcionesMenuPrincipal = new Object[]{
@@ -25,20 +25,20 @@ public class MenuPrincipal {
     }
 
     // comprobamos la seleccion y llamamos al imput para la entrada de valores
-    public void comprobarSeleccion() {
+    public int comprobarSeleccion() {
 
         if (seleccionar.equals(opcionesMenuPrincipal[0])) {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
             menuPrincipal.comprobarSeleccion();
         } else {
-            Input input = new Input();
             if (seleccionar.equals(opcionesMenuPrincipal[1])) {
-                input.ejecutarConvertidor(1);
+                return 1;
             } else if (seleccionar.equals(opcionesMenuPrincipal[2])) {
-                input.ejecutarConvertidor(2);
+                return 2;
             } else if (seleccionar.equals(opcionesMenuPrincipal[3])) {
-                input.ejecutarConvertidor(3);
+                return 3;
             }
         }
+        return 0;
     }
 }

@@ -4,10 +4,31 @@ import javax.swing.JOptionPane;
 
 public class Input {
 
-    protected static String entrada;
+    private String entrada;
 
     public Input() {
-        entrada = JOptionPane.showInputDialog(null, "Ingrese el valor a convertir:", "Entrada", JOptionPane.QUESTION_MESSAGE);
+        entrada = JOptionPane.showInputDialog(
+                null,
+                "Ingrese el valor a convertir:",
+                "Entrada",
+                JOptionPane.QUESTION_MESSAGE);
+    }
+
+    public String getEntrada() {
+        while (entrada != null && !isNumber(entrada)) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    "valor Invalido, \n debe ingresar un valor numérico",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+
+            entrada = JOptionPane.showInputDialog(null,
+                    "Ingrese un valor numerico");
+        }
+        if (entrada == null) {
+            MenuPrincipal menuPrincipal = new MenuPrincipal();
+        }
+
+        return entrada;
     }
 
     // validar que el valor ingresado sea un numero y no otro caracter
@@ -21,22 +42,7 @@ public class Input {
     }
 
     // comprobar y ejecutar el convertidor correspondiente
-    protected void ejecutarConvertidor(int i) {
-
-        while (entrada != null && !isNumber(entrada)) {
-            entrada = JOptionPane.showInputDialog(null, "NUMERO INVALIDO! \n ingrese un valor numerico");
-        }
-        if (entrada == null) {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-        } else {
-            if (i == 1) {
-                TipoDeCambio tipoDeCambio = new TipoDeCambio();
-            } else if (i == 2) {
-                ConversorTemperatura conversorTemperatura = new ConversorTemperatura();
-            } else if (i == 3) {
-                ConversorMedidas conversorMedidas = new ConversorMedidas();
-            }
-        }
+    public void ejecutarConvertidor() {
 
     }
 
