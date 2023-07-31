@@ -4,31 +4,35 @@ import javax.swing.JOptionPane;
 
 public class ConversorMedidas {
 
-    protected Object[] opcionesMedidas;
+    private enum OpcionesConversion {
+        SELECCIONE_UNA_OPCION,
+        MILIMETRO_A_DECIMETRO,
+        MILIMETRO_A_CENTIMETRO,
+        MILIMETRO_A_METRO,
+        DECIMETRO_A_MILIMETRO,
+        DECIMETRO_A_CENTIMETRO,
+        DECIMETRO_A_METRO,
+        CENTIMETRO_A_MILIMETRO,
+        CENTIMETRO_A_DECIMETRO,
+        CENTIMETRO_A_METRO,
+        METRO_A_MILIMETRO,
+        METRO_A_DECIMETRO,
+        METRO_A_CENTIMETRO;
+    }
+
+    protected OpcionesConversion seleccionConversion;
 
     public ConversorMedidas() {
-        opcionesMedidas = new Object[]{
-            "Seleccione una Opcion",
-            "Milimetro a Decimetro",
-            "Milimetro a Centimetro",
-            "Milimetro a Metro",
-            "Decimetro a milimetro",
-            "Decimetro a Centimetro",
-            "Decimetro a Metro",
-            "Centimetro a Milimetro",
-            "Centimetro a Decimetro",
-            "Centimetro a Metro",
-            "Metro a milimetro",
-            "Metro a Decimetro",
-            "Metro a Centimetro"
-        };
-        Object seleccionar = JOptionPane.showInputDialog(
+        OpcionesConversion[] tiposConversion = OpcionesConversion.values();
+        seleccionConversion = (OpcionesConversion) JOptionPane.showInputDialog(
                 null,
                 "Tipo de Cambio: ",
                 "Medidas",
                 JOptionPane.QUESTION_MESSAGE,
-                null, opcionesMedidas,
-                opcionesMedidas[0]
+                null,
+                tiposConversion,
+                tiposConversion[0]
         );
     }
+
 }

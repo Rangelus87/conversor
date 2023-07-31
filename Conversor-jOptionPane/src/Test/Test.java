@@ -15,6 +15,7 @@ public class Test {
         if (i == 1) {
             ConvesorMonedas convesorMonedas = new ConvesorMonedas();
             convesorMonedas.obtenerSeleccion(ValorIngresado);
+            System.out.println(convesorMonedas.getConversion());
         } else if (i == 2) {
             ConversorMedidas conversorMedidas = new ConversorMedidas();
         } else if (i == 3) {
