@@ -4,31 +4,32 @@ import javax.swing.JOptionPane;
 
 public class Input {
 
-    private String entrada;
+    private String ValorAConvertir;
 
     public Input() {
-        entrada = JOptionPane.showInputDialog(
+        ValorAConvertir = JOptionPane.showInputDialog(
                 null,
                 "Ingrese el valor a convertir:",
                 "Entrada",
                 JOptionPane.QUESTION_MESSAGE);
     }
 
-    public String getEntrada() {
-        while (entrada != null && !isNumber(entrada)) {
+    public float getEntrada() {
+        while (ValorAConvertir != null && !isNumber(ValorAConvertir)) {
             JOptionPane.showMessageDialog(
                     null,
-                    "valor Invalido, \n debe ingresar un valor numérico",
+                    "valor Invalido \n Debe ingresar un valor numérico",
                     "Error", JOptionPane.ERROR_MESSAGE);
 
-            entrada = JOptionPane.showInputDialog(null,
+            ValorAConvertir = JOptionPane.showInputDialog(null,
                     "Ingrese un valor numerico");
         }
-        if (entrada == null) {
+        if (ValorAConvertir == null) {
             MenuPrincipal menuPrincipal = new MenuPrincipal();
         }
 
-        return entrada;
+        float valorRetornado = Float.parseFloat(ValorAConvertir);
+        return valorRetornado;
     }
 
     // validar que el valor ingresado sea un numero y no otro caracter
@@ -40,10 +41,4 @@ public class Input {
             return false;
         }
     }
-
-    // comprobar y ejecutar el convertidor correspondiente
-    public void ejecutarConvertidor() {
-
-    }
-
 }

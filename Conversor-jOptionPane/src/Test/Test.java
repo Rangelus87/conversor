@@ -3,26 +3,30 @@ package Test;
 import Views.ConversorMedidas;
 import Views.ConversorTemperatura;
 import Views.ConvesorMonedas;
-import Views.ValorConversion;
+import Views.Input;
+import Views.MenuPrincipal;
 
 public class Test {
-
-    private float valorConvertido;
-
-    private void llamarConvertidores(int i, String entrada) {
-
+    
+    private void llamarConvertidor(int i) {
+        Input input = new Input();
+        float ValorIngresado = input.getEntrada();
+        
         if (i == 1) {
             ConvesorMonedas convesorMonedas = new ConvesorMonedas();
-            convesorMonedas.obtenerSeleccion(Integer.parseInt(entrada));
-            ValorConversion valorConversion = new ValorConversion(convesorMonedas.getConversion());
+            convesorMonedas.obtenerSeleccion(ValorIngresado);
         } else if (i == 2) {
-            ConversorTemperatura conversorTemperatura = new ConversorTemperatura();
-        } else if (i == 3) {
             ConversorMedidas conversorMedidas = new ConversorMedidas();
+        } else if (i == 3) {
+            ConversorTemperatura conversorTemperatura = new ConversorTemperatura();
         }
     }
-
+    
     public static void main(String[] args) {
-
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        int seleccion = menuPrincipal.obtenerSeleccion();
+        System.out.println("seleccion = " + seleccion);
+        Test test = new Test();
+        test.llamarConvertidor(seleccion);
     }
 }
