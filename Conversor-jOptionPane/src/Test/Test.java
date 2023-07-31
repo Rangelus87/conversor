@@ -8,20 +8,73 @@ import Views.MenuPrincipal;
 
 public class Test {
 
-    private void llamarConvertidor(int i) {
-        Input input = new Input();
-        float ValorIngresado = input.getEntrada();
+    private int seleccion;
+    private float valorIngresado;
+    private MenuPrincipal menuPrincipal;
+    private Input input;
+    private ConvesorMonedas convesorMonedas;
+    private ConversorTemperatura conversorTemperatura;
+    private ConversorMedidas conversorMedidas;
 
-        if (i == 1) {
-            ConvesorMonedas convesorMonedas = new ConvesorMonedas();
-            convesorMonedas.obtenerSeleccion(ValorIngresado);
-            System.out.println(convesorMonedas.getConversion());
-        } else if (i == 2) {
-            ConversorMedidas conversorMedidas = new ConversorMedidas();
-        } else if (i == 3) {
-            ConversorTemperatura conversorTemperatura = new ConversorTemperatura();
-            conversorTemperatura.obtenerSeleccion(ValorIngresado);
-            System.out.println(conversorTemperatura.getValorConvertido());
+    private void validacionNullInput() {
+        menuPrincipal = new MenuPrincipal();
+        input = new Input();
+        if (input.validarNull() != -1) {
+            seleccion = menuPrincipal.obtenerSeleccion();
+            System.out.println("seleccion = " + seleccion);
+            valorIngresado = input.getEntrada();
+            System.out.println("Valor Ingresado: " + valorIngresado);
+        } else {
+            validacionNullInput();
+        }
+
+    }
+
+    private void validarNullConversorMonedas() {
+        if (convesorMonedas.isNull() == -1) {
+            llamadas();
+        } else {
+            convesorMonedas.seleccionarYConvertir(valorIngresado);
+            System.out.println("Monedas convertidas: " + convesorMonedas.getConversion());
+        }
+    }
+
+    private void validarNullConversorTemperatura() {
+        if (conversorTemperatura.isNull() == -1) {
+            llamadas();
+        } else {
+            conversorTemperatura.obtenerSeleccion(valorIngresado);
+            System.out.println("Temperatura convertida: " + conversorTemperatura.getValorConvertido());
+        }
+    }
+
+    private void validarNullConversorMedidas() {
+        if (conversorTemperatura.isNull() == -1) {
+            llamadas();
+        } else {
+            conversorMedidas.conversion(valorIngresado);
+            System.out.println("Medida convertida: " + conversorMedidas.getConversion());
+        }
+    }
+
+    private void llamarConvertidor() {
+
+        switch (seleccion) {
+            case 1 -> {
+                convesorMonedas = new ConvesorMonedas();
+                validarNullConversorMonedas();
+            }
+            case 2 -> {
+                conversorMedidas = new ConversorMedidas();
+                validarNullConversorMedidas();
+            }
+            case 3 -> {
+                conversorTemperatura = new ConversorTemperatura();
+                validarNullConversorTemperatura();
+            }
+            default -> {
+                System.out.println("No se que paso");
+            }
         }
     }
 
@@ -29,11 +82,15 @@ public class Test {
 
     }
 
-    public static void main(String[] args) {
-        MenuPrincipal menuPrincipal = new MenuPrincipal();
-        int seleccion = menuPrincipal.obtenerSeleccion();
-        System.out.println("seleccion = " + seleccion);
+    private void llamadas() {
         Test test = new Test();
-        test.llamarConvertidor(seleccion);
+        test.validacionNullInput();
+        test.llamarConvertidor();
+    }
+
+    public static void main(String[] args) {
+
+        Test test = new Test();
+        test.llamadas();
     }
 }

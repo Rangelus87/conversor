@@ -24,18 +24,23 @@ public class Input {
             ValorAConvertir = JOptionPane.showInputDialog(null,
                     "Ingrese un valor numerico");
         }
+
+        return Float.parseFloat(ValorAConvertir);
+    }
+
+    public int validarNull() {
         if (ValorAConvertir == null) {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
+            return -1;
+        } else {
+            return 1;
         }
 
-        float valorRetornado = Float.parseFloat(ValorAConvertir);
-        return valorRetornado;
     }
 
     // validar que el valor ingresado sea un numero y no otro caracter
     private boolean isNumber(String s) {
         try {
-            Integer.parseInt(s);
+            Integer.valueOf(s);
             return true;
         } catch (NumberFormatException nfe) {
             return false;

@@ -30,6 +30,14 @@ public class ConversorTemperatura {
         );
     }
 
+    public int isNull() {
+        if (seleccionConversion == null) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
     public void obtenerSeleccion(float num) {
 
         switch (seleccionConversion) {

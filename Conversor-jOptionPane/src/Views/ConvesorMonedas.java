@@ -43,13 +43,32 @@ public class ConvesorMonedas {
                 listaCambios[0]
         );
 
-        if (ventanaCambio == null || ventanaCambio == TipoCambio.SELECCIONE_UNA_OPCION) {
+        if (ventanaCambio == TipoCambio.SELECCIONE_UNA_OPCION) {
             JOptionPane.showMessageDialog(null,
                     "Debe seleccionar un tipo de cambio");
+
+            ventanaCambio = (TipoCambio) JOptionPane.showInputDialog(
+                    null,
+                    "Seleccione el tipo de cambio",
+                    "monedas",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    listaCambios,
+                    listaCambios[0]
+            );
+        }
+
+    }
+
+    public int isNull() {
+        if (ventanaCambio == null) {
+            return -1;
+        } else {
+            return 1;
         }
     }
 
-    public void obtenerSeleccion(float num) {
+    public void seleccionarYConvertir(float num) {
         float valorDeCambio = ventanaCambio.getValor();
         switch (ventanaCambio) {
             case PESO_A_DOLAR:
