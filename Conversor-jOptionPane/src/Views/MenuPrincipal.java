@@ -40,7 +40,7 @@ public class MenuPrincipal {
                 opciones,
                 opciones[0]);
 
-        while (seleccionMenu == OpcionesMenu.SELECCIONE_UNA_OPCION || seleccionMenu != null) {
+        while (seleccionMenu == OpcionesMenu.SELECCIONE_UNA_OPCION) {
             JOptionPane.showMessageDialog(null,
                     "Debe seleccionar una opcion");
 
