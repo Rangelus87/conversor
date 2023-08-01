@@ -46,7 +46,6 @@ Este proyecto se distribuye bajo la Licencia MIT. Puedes consultar el archivo `L
 
 ## Contacto
 
-Si tienes preguntas o sugerencias sobre este proyecto, no dudes en ponerte en contacto con nosotros a través del correo electrónico [rangelus87@gmail.com]
-(mailto:rangelus87@gmail.com).
+Si tienes preguntas o sugerencias sobre este proyecto, no dudes en ponerte en contacto con nosotros a través del correo electrónico [rangelus87@gmail.com](mailto:rangelus87@gmail.com).
 
 ¡Gracias por utilizar Conversores! Esperamos que esta herramienta te sea útil en tus conversiones diarias.
