@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
  * La clase ConversorMedidas representa un conversor de medidas que permite
  * convertir entre diferentes unidades de longitud, como milímetros,
  * centímetros, decímetros y metros.
+ *
+ * @author rangelus
  */
 public class ConversorMedidas {
 
@@ -14,28 +16,40 @@ public class ConversorMedidas {
      * conversión de medidas. Cada opción tiene asociado un valor de conversión.
      */
     private enum OpcionesConversion {
-        SELECCIONE_UNA_OPCION(0),
-        MILIMETRO_A_CENTIMETRO(10),
-        MILIMETRO_A_DECIMETRO(100),
-        MILIMETRO_A_METRO(1000),
-        CENTIMETRO_A_MILIMETRO(10),
-        CENTIMETRO_A_DECIMETRO(10),
-        CENTIMETRO_A_METRO(100),
-        DECIMETRO_A_MILIMETRO(100),
-        DECIMETRO_A_CENTIMETRO(10),
-        DECIMETRO_A_METRO(10),
-        METRO_A_MILIMETRO(1000),
-        METRO_A_CENTIMETRO(100),
-        METRO_A_DECIMETRO(10);
+        SELECCIONE_UNA_OPCION(0, "null", "null"),
+        MILIMETRO_A_CENTIMETRO(10, "milimetros", "centimetros"),
+        MILIMETRO_A_DECIMETRO(100, "milimetros", "decimetros"),
+        MILIMETRO_A_METRO(1000, "milimetros", "metros"),
+        CENTIMETRO_A_MILIMETRO(10, "centimetros", "milimetros"),
+        CENTIMETRO_A_DECIMETRO(10, "centimetros", "decimetros"),
+        CENTIMETRO_A_METRO(100, "centimetros", "metros"),
+        DECIMETRO_A_MILIMETRO(100, "decimetros", "milimetros"),
+        DECIMETRO_A_CENTIMETRO(10, "decimetros", "centimetros"),
+        DECIMETRO_A_METRO(10, "decimetros", "metros"),
+        METRO_A_MILIMETRO(1000, "metros", "milimetros"),
+        METRO_A_CENTIMETRO(100, "metros", "centimetros"),
+        METRO_A_DECIMETRO(10, "metros", "decimetros");
 
         private final int valor;
+        private final String unidadEntrada;
+        private final String unidadSalida;
 
-        private OpcionesConversion(int valor) {
+        private OpcionesConversion(int valor, String unidadEntrada, String unidadSalida) {
             this.valor = valor;
+            this.unidadEntrada = unidadEntrada;
+            this.unidadSalida = unidadSalida;
         }
 
         public int getValor() {
             return valor;
+        }
+
+        public String getUnidadEntrada() {
+            return unidadEntrada;
+        }
+
+        public String getUnidadSalida() {
+            return unidadSalida;
         }
 
     }
@@ -67,11 +81,7 @@ public class ConversorMedidas {
      * @return 1 si la selección no es nula, -1 si es nula.
      */
     public int isNull() {
-        if (seleccionConversion == null) {
-            return -1;
-        } else {
-            return 1;
-        }
+        return seleccionConversion != null ? 1 : -1;
     }
 
     /**
@@ -111,6 +121,24 @@ public class ConversorMedidas {
      */
     public float getConversion() {
         return conversion;
+    }
+
+    /**
+     * Obrtinene la unidad de medida base
+     *
+     * @return unidad de medida base
+     */
+    public String getUnidadEntrada() {
+        return seleccionConversion.getUnidadEntrada();
+    }
+
+    /**
+     * Obrtinene la unidad de medida final
+     *
+     * @return unidad de medida final
+     */
+    public String getUnidadSalida() {
+        return seleccionConversion.getUnidadSalida();
     }
 
 }

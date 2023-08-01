@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
  * La clase ConversorTemperatura representa un conversor de temperaturas que
  * permite convertir entre diferentes unidades de temperatura, como Celsius,
  * Fahrenheit y Kelvin.
+ *
+ * @author rangelus
  */
 public class ConversorTemperatura {
 
@@ -14,13 +16,30 @@ public class ConversorTemperatura {
      * de temperaturas.
      */
     private enum TiposConversion {
-        SELECCIONE_UNA_OPCION,
-        CELSIUS_A_FAHRENHEIT,
-        CELSIUS_A_KELVIN,
-        FAHRENHEIT_A_CELSIUS,
-        FAHRENHEIT_A_KELVIN,
-        KELVIN_A_CELSIUS,
-        KELVIN_A_FAHRENHEIT;
+        SELECCIONE_UNA_OPCION("null", "null"),
+        CELSIUS_A_FAHRENHEIT("grados celsius", "grados fahrenheit"),
+        CELSIUS_A_KELVIN("grados celsius", "kelvin"),
+        FAHRENHEIT_A_CELSIUS("grados fahrenheit", "grados celsius"),
+        FAHRENHEIT_A_KELVIN("grados fahrenheit", "kelvin"),
+        KELVIN_A_CELSIUS("kelvin", "grados celsius"),
+        KELVIN_A_FAHRENHEIT("kelvin", "grados fahrenheit");
+
+        private final String unidadEntrada;
+        private final String unidadSalida;
+
+        private TiposConversion(String unidadEntrada, String unidadSalida) {
+            this.unidadEntrada = unidadEntrada;
+            this.unidadSalida = unidadSalida;
+        }
+
+        public String getUnidadEntrada() {
+            return unidadEntrada;
+        }
+
+        public String getUnidadSalida() {
+            return unidadSalida;
+        }
+
     }
 
     private TiposConversion seleccionConversion;
@@ -50,11 +69,7 @@ public class ConversorTemperatura {
      * @return 1 si la selección no es nula, -1 si es nula.
      */
     public int isNull() {
-        if (seleccionConversion == null) {
-            return -1;
-        } else {
-            return 1;
-        }
+        return seleccionConversion == null ? -1 : 1;
     }
 
     /**
@@ -94,5 +109,23 @@ public class ConversorTemperatura {
      */
     public float getValorConvertido() {
         return valorConvertido;
+    }
+
+    /**
+     * Obtiene la unidad de medida base
+     *
+     * @return la unidad de medida base
+     */
+    public String getUnidadEntrada() {
+        return seleccionConversion.getUnidadEntrada();
+    }
+
+    /**
+     * Obtiene la unidad de medida de dalida
+     *
+     * @return la unidad de medida de salida
+     */
+    public String getUnidadSalida() {
+        return seleccionConversion.getUnidadSalida();
     }
 }

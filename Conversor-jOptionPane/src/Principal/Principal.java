@@ -5,7 +5,16 @@ import Views.ConversorTemperatura;
 import Views.ConvesorMonedas;
 import Views.Input;
 import Views.MenuPrincipal;
+import Views.VentanaContunuar;
+import Views.VentanaSalidaConversion;
+import javax.swing.JOptionPane;
 
+/**
+ * Clase pricipal del programa conversores donde se llaman y ejecutan todas las
+ * clases creadas con los diferentes tipos de conversores
+ *
+ * @author rangelus
+ */
 public class Principal {
 
     private int seleccion;
@@ -15,7 +24,9 @@ public class Principal {
     private ConvesorMonedas convesorMonedas;
     private ConversorTemperatura conversorTemperatura;
     private ConversorMedidas conversorMedidas;
+    private VentanaSalidaConversion ventana;
 
+    // metodo que inicia el software y valida la entrada del usuario
     private void validacionNullInput() {
         menuPrincipal = new MenuPrincipal();
         input = new Input();
@@ -30,33 +41,53 @@ public class Principal {
 
     }
 
+    //comprobacion de la seleccion del usuario 
     private void validarNullConversorMonedas() {
         if (convesorMonedas.isNull() == -1) {
             llamadas();
         } else {
             convesorMonedas.seleccionarYConvertir(valorIngresado);
+            ventana = new VentanaSalidaConversion(
+                    valorIngresado,
+                    convesorMonedas.getMonedaEntrada(),
+                    convesorMonedas.getConversion(),
+                    convesorMonedas.getMonedaSalida());
+
             System.out.println("Monedas convertidas: " + convesorMonedas.getConversion());
         }
     }
 
+    //Comprobacion de la seleccion del usuario
     private void validarNullConversorTemperatura() {
         if (conversorTemperatura.isNull() == -1) {
             llamadas();
         } else {
             conversorTemperatura.obtenerSeleccion(valorIngresado);
+            ventana = new VentanaSalidaConversion(
+                    valorIngresado,
+                    conversorTemperatura.getUnidadEntrada(),
+                    conversorTemperatura.getValorConvertido(),
+                    conversorTemperatura.getUnidadSalida());
             System.out.println("Temperatura convertida: " + conversorTemperatura.getValorConvertido());
         }
     }
 
+    //Comprobacion de la seleccion del usuario
     private void validarNullConversorMedidas() {
-        if (conversorTemperatura.isNull() == -1) {
+        if (conversorMedidas.isNull() == -1) {
             llamadas();
         } else {
             conversorMedidas.conversion(valorIngresado);
+            ventana = new VentanaSalidaConversion(
+                    valorIngresado,
+                    conversorMedidas.getUnidadEntrada(),
+                    conversorMedidas.getConversion(),
+                    conversorMedidas.getUnidadSalida());
             System.out.println("Medida convertida: " + conversorMedidas.getConversion());
         }
     }
 
+    // Método para llamar al convertidor según la selección del menuPrincipal
     private void llamarConvertidor() {
 
         switch (seleccion) {
@@ -78,19 +109,38 @@ public class Principal {
         }
     }
 
-    private void valorConversion(int conversor, float valor) {
-
+    /**
+     * El metodo llamadas como indica su nombre hace la llamada a los metodos
+     * que inician el programa
+     */
+    private void llamadas() {
+        Principal convesorPrincipal = new Principal();
+        convesorPrincipal.validacionNullInput();
+        convesorPrincipal.llamarConvertidor();
     }
 
-    private void llamadas() {
-        Principal test = new Principal();
-        test.validacionNullInput();
-        test.llamarConvertidor();
+    /**
+     * El metodo salir comprueba si salir o continuar en el programa
+     */
+    private void salir() {
+        VentanaContunuar continuar = new VentanaContunuar();
+        if (!continuar.validarSalir()) {
+            llamadas();
+        }
+    }
+
+    /**
+     * ventana que avisa la rerminacion del programa
+     */
+    private void terminado() {
+        JOptionPane.showMessageDialog(null, "Programa terminado");
     }
 
     public static void main(String[] args) {
 
-        Principal test = new Principal();
-        test.llamadas();
+        Principal conversorPrincipal = new Principal();
+        conversorPrincipal.llamadas();
+        conversorPrincipal.salir();
+        conversorPrincipal.terminado();
     }
 }

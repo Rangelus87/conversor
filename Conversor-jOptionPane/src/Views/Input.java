@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
  * La clase Input representa una entrada de valor numérico proporcionada por el
  * usuario. Se utiliza para obtener un valor que se convertirá posteriormente en
  * el programa.
+ *
+ * @author rangelus
  */
 public class Input {
 

@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
  * realizar conversiones entre diferentes tipos de monedas, de Peso a Dólar,
  * Euro, Libra, Yen o Won Coreano y a la inversa. La conversión se realiza
  * mediante una selección del tipo de cambio y una cantidad a convertir.
+ *
+ * @author rangelus
  */
 public class ConvesorMonedas {
 
@@ -16,27 +18,40 @@ public class ConvesorMonedas {
      * tasa de conversión.
      */
     private enum TipoCambio {
-        SELECCIONE_UNA_OPCION(0),
-        PESO_A_DOLAR(545),
-        PESO_A_EURO(593),
-        PESO_A_LIBRA(711.16F),
-        PESO_A_YEN(1.94F),
-        PESO_A_WON_COREANO(1.94F),
-        DOLAR_A_PESO(545),
-        EURO_A_PESO(593),
-        LIBRA_A_PESO(711.16F),
-        YEN_A_PESO(1.94F),
-        WON_COREANO_A_PESO(1.94F);
+        SELECCIONE_UNA_OPCION(0, "null", "null"),
+        PESO_A_DOLAR(545, "pesos", "dolares"),
+        PESO_A_EURO(593, "pesos", "euros"),
+        PESO_A_LIBRA(711.16F, "pesos", "libras"),
+        PESO_A_YEN(1.94F, "pesos", "yenes"),
+        PESO_A_WON_COREANO(1.94F, "pesos", "wones"),
+        DOLAR_A_PESO(545, "dolares", "pesos"),
+        EURO_A_PESO(593, "euros", "pesos"),
+        LIBRA_A_PESO(711.16F, "libras", "pesos"),
+        YEN_A_PESO(1.94F, "yenes", "pesos"),
+        WON_COREANO_A_PESO(1.94F, "wones", "pesos");
 
         private final float valor;
+        private final String monedaEntrada;
+        private final String monedaSalida;
 
-        TipoCambio(float valor) {
+        TipoCambio(float valor, String monedaEntrada, String monedaSalida) {
             this.valor = valor;
+            this.monedaEntrada = monedaEntrada;
+            this.monedaSalida = monedaSalida;
         }
 
         public float getValor() {
             return valor;
         }
+
+        public String getMonedaEntrada() {
+            return monedaEntrada;
+        }
+
+        public String getMonedaSalida() {
+            return monedaSalida;
+        }
+
     }
 
     private TipoCambio ventanaCambio;
@@ -125,5 +140,23 @@ public class ConvesorMonedas {
      */
     public float getConversion() {
         return conversion;
+    }
+
+    /**
+     * Obtine la moneda base que se va a cambiar
+     *
+     * @return moneda base
+     */
+    public String getMonedaEntrada() {
+        return ventanaCambio.getMonedaEntrada();
+    }
+
+    /**
+     * Obtine la moneda a la que se va a convertir
+     *
+     * @return moneda final
+     */
+    public String getMonedaSalida() {
+        return ventanaCambio.getMonedaSalida();
     }
 }

@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
  * La clase MenuPrincipal representa el menú principal de la aplicación. Permite
  * al usuario seleccionar entre diferentes opciones, como el conversor de
  * monedas, el conversor de medidas y el conversor de temperatura.
+ *
+ * @author rangelus
  */
 public class MenuPrincipal {
 
@@ -38,7 +40,7 @@ public class MenuPrincipal {
                 opciones,
                 opciones[0]);
 
-        while (seleccionMenu == OpcionesMenu.SELECCIONE_UNA_OPCION) {
+        while (seleccionMenu == OpcionesMenu.SELECCIONE_UNA_OPCION || seleccionMenu != null) {
             JOptionPane.showMessageDialog(null,
                     "Debe seleccionar una opcion");
 
