@@ -1,4 +1,4 @@
-package Test;
+package Principal;
 
 import Views.ConversorMedidas;
 import Views.ConversorTemperatura;
@@ -6,7 +6,7 @@ import Views.ConvesorMonedas;
 import Views.Input;
 import Views.MenuPrincipal;
 
-public class Test {
+public class Principal {
 
     private int seleccion;
     private float valorIngresado;
@@ -83,14 +83,14 @@ public class Test {
     }
 
     private void llamadas() {
-        Test test = new Test();
+        Principal test = new Principal();
         test.validacionNullInput();
         test.llamarConvertidor();
     }
 
     public static void main(String[] args) {
 
-        Test test = new Test();
+        Principal test = new Principal();
         test.llamadas();
     }
 }

@@ -2,8 +2,19 @@ package Views;
 
 import javax.swing.JOptionPane;
 
+/**
+ * La clase ConvesorMonedas representa un convertidor de monedas que permite
+ * realizar conversiones entre diferentes tipos de monedas, de Peso a Dólar,
+ * Euro, Libra, Yen o Won Coreano y a la inversa. La conversión se realiza
+ * mediante una selección del tipo de cambio y una cantidad a convertir.
+ */
 public class ConvesorMonedas {
 
+    /**
+     * Enum TipoCambio define los tipos de cambio disponibles para la
+     * conversión. Cada tipo de cambio tiene un valor asociado que representa la
+     * tasa de conversión.
+     */
     private enum TipoCambio {
         SELECCIONE_UNA_OPCION(0),
         PESO_A_DOLAR(545),
@@ -31,6 +42,12 @@ public class ConvesorMonedas {
     private TipoCambio ventanaCambio;
     private float conversion;
 
+    /**
+     * Constructor de la clase ConvesorMonedas. Muestra un cuadro de diálogo
+     * para que el usuario seleccione el tipo de cambio deseado. Si no se
+     * selecciona ningún tipo de cambio, muestra un mensaje de error y vuelve a
+     * solicitar la selección.
+     */
     public ConvesorMonedas() {
         TipoCambio[] listaCambios = TipoCambio.values();
         ventanaCambio = (TipoCambio) JOptionPane.showInputDialog(
@@ -43,7 +60,7 @@ public class ConvesorMonedas {
                 listaCambios[0]
         );
 
-        if (ventanaCambio == TipoCambio.SELECCIONE_UNA_OPCION) {
+        while (ventanaCambio == TipoCambio.SELECCIONE_UNA_OPCION) {
             JOptionPane.showMessageDialog(null,
                     "Debe seleccionar un tipo de cambio");
 
@@ -60,6 +77,12 @@ public class ConvesorMonedas {
 
     }
 
+    /**
+     * Verifica si el tipo de cambio seleccionado es nulo o se presiono
+     * cancelar.
+     *
+     * @return 1 si el tipo de cambio no es nulo, -1 si es nulo.
+     */
     public int isNull() {
         if (ventanaCambio == null) {
             return -1;
@@ -68,6 +91,12 @@ public class ConvesorMonedas {
         }
     }
 
+    /**
+     * Realiza la conversión de la cantidad num según el tipo de cambio
+     * seleccionado.
+     *
+     * @param num La cantidad a convertir.
+     */
     public void seleccionarYConvertir(float num) {
         float valorDeCambio = ventanaCambio.getValor();
         switch (ventanaCambio) {
@@ -89,6 +118,11 @@ public class ConvesorMonedas {
         }
     }
 
+    /**
+     * Obtiene el resultado de la conversión realizada.
+     *
+     * @return El valor de la conversión.
+     */
     public float getConversion() {
         return conversion;
     }

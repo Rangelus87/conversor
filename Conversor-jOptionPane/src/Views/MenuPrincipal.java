@@ -2,9 +2,16 @@ package Views;
 
 import javax.swing.JOptionPane;
 
+/**
+ * La clase MenuPrincipal representa el menú principal de la aplicación. Permite
+ * al usuario seleccionar entre diferentes opciones, como el conversor de
+ * monedas, el conversor de medidas y el conversor de temperatura.
+ */
 public class MenuPrincipal {
 
-    //definicion de la clase enum para las opciones del menu
+    /**
+     * Enum OpcionesMenu define las opciones disponibles en el menú principal.
+     */
     private enum OpcionesMenu {
         SELECCIONE_UNA_OPCION,
         CONVERSOR_DE_MONEDAS,
@@ -15,7 +22,12 @@ public class MenuPrincipal {
 
     private OpcionesMenu seleccionMenu;
 
-    //constructor del menu
+    /**
+     * Constructor de la clase MenuPrincipal. Muestra un cuadro de diálogo para
+     * que el usuario seleccione una opción del menú. Si no se selecciona
+     * ninguna opción, muestra un mensaje de error y vuelve a solicitar la
+     * selección.
+     */
     public MenuPrincipal() {
         OpcionesMenu[] opciones = OpcionesMenu.values();
         seleccionMenu = (OpcionesMenu) JOptionPane.showInputDialog(
@@ -40,7 +52,13 @@ public class MenuPrincipal {
         }
     }
 
-    // obtener la opción seleccionada por el usuario
+    /**
+     * Obtiene la opción seleccionada por el usuario.
+     *
+     * @return 1 si se selecciona CONVERSOR_DE_MONEDAS, 2 si se selecciona
+     * CONVERSOR_DE_MEDIDAS, 3 si se selecciona CONVERSOR_DE_TEMPERATURA, 0 si
+     * no se selecciona ninguna opción.
+     */
     public int obtenerSeleccion() {
 
         return switch (seleccionMenu) {

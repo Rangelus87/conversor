@@ -2,8 +2,17 @@ package Views;
 
 import javax.swing.JOptionPane;
 
+/**
+ * La clase ConversorTemperatura representa un conversor de temperaturas que
+ * permite convertir entre diferentes unidades de temperatura, como Celsius,
+ * Fahrenheit y Kelvin.
+ */
 public class ConversorTemperatura {
 
+    /**
+     * Enum TiposConversion define las opciones disponibles para la conversión
+     * de temperaturas.
+     */
     private enum TiposConversion {
         SELECCIONE_UNA_OPCION,
         CELSIUS_A_FAHRENHEIT,
@@ -17,6 +26,10 @@ public class ConversorTemperatura {
     private TiposConversion seleccionConversion;
     private float valorConvertido;
 
+    /**
+     * Constructor de la clase ConversorTemperatura. Muestra un cuadro de
+     * diálogo para que el usuario seleccione una opción de conversión.
+     */
     public ConversorTemperatura() {
         TiposConversion[] tiposConversion = TiposConversion.values();
         seleccionConversion = (TiposConversion) JOptionPane.showInputDialog(
@@ -30,6 +43,12 @@ public class ConversorTemperatura {
         );
     }
 
+    /**
+     * Verifica si la selección de conversión es nula (es decir, si el usuario
+     * ha cancelado la selección).
+     *
+     * @return 1 si la selección no es nula, -1 si es nula.
+     */
     public int isNull() {
         if (seleccionConversion == null) {
             return -1;
@@ -38,6 +57,12 @@ public class ConversorTemperatura {
         }
     }
 
+    /**
+     * Realiza la conversión del valor proporcionado según la opción
+     * seleccionada.
+     *
+     * @param num El valor numérico que se convertirá.
+     */
     public void obtenerSeleccion(float num) {
 
         switch (seleccionConversion) {
@@ -62,6 +87,11 @@ public class ConversorTemperatura {
         }
     }
 
+    /**
+     * Obtiene el valor resultante después de la conversión.
+     *
+     * @return El valor convertido.
+     */
     public float getValorConvertido() {
         return valorConvertido;
     }

@@ -2,8 +2,17 @@ package Views;
 
 import javax.swing.JOptionPane;
 
+/**
+ * La clase ConversorMedidas representa un conversor de medidas que permite
+ * convertir entre diferentes unidades de longitud, como milímetros,
+ * centímetros, decímetros y metros.
+ */
 public class ConversorMedidas {
 
+    /**
+     * Enum OpcionesConversion define las opciones disponibles para la
+     * conversión de medidas. Cada opción tiene asociado un valor de conversión.
+     */
     private enum OpcionesConversion {
         SELECCIONE_UNA_OPCION(0),
         MILIMETRO_A_CENTIMETRO(10),
@@ -34,6 +43,10 @@ public class ConversorMedidas {
     protected OpcionesConversion seleccionConversion;
     private float conversion;
 
+    /**
+     * Constructor de la clase ConversorMedidas. Muestra un cuadro de diálogo
+     * para que el usuario seleccione una opción de conversión.
+     */
     public ConversorMedidas() {
         OpcionesConversion[] tiposConversion = OpcionesConversion.values();
         seleccionConversion = (OpcionesConversion) JOptionPane.showInputDialog(
@@ -47,6 +60,12 @@ public class ConversorMedidas {
         );
     }
 
+    /**
+     * Verifica si la selección de conversión es nula (es decir, si el usuario
+     * ha cancelado la selección).
+     *
+     * @return 1 si la selección no es nula, -1 si es nula.
+     */
     public int isNull() {
         if (seleccionConversion == null) {
             return -1;
@@ -55,6 +74,12 @@ public class ConversorMedidas {
         }
     }
 
+    /**
+     * Realiza la conversión del valor proporcionado según la opción
+     * seleccionada.
+     *
+     * @param num El valor numérico que se convertirá.
+     */
     public void conversion(float num) {
         int valorConversion = seleccionConversion.getValor();
 
@@ -79,6 +104,11 @@ public class ConversorMedidas {
         }
     }
 
+    /**
+     * Obtiene el resultado de la conversión.
+     *
+     * @return El valor resultante después de la conversión.
+     */
     public float getConversion() {
         return conversion;
     }

@@ -2,12 +2,13 @@ package Views;
 
 import javax.swing.JOptionPane;
 
-public class ValorConversion {
+public class VentanaSalidaConversion {
 
-    public ValorConversion(float conversion) {
+    public VentanaSalidaConversion(float conversion) {
         JOptionPane.showMessageDialog(
                 null,
-                conversion, "conversion",
+                conversion,
+                "conversion",
                 JOptionPane.INFORMATION_MESSAGE,
                 null);
     }
