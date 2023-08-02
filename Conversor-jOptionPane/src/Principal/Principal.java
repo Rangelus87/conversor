@@ -114,9 +114,9 @@ public class Principal {
      * que inician el programa
      */
     private void llamadas() {
-        Principal convesorPrincipal = new Principal();
-        convesorPrincipal.validacionNullInput();
-        convesorPrincipal.llamarConvertidor();
+        Principal conversorPrincipal = new Principal();
+        conversorPrincipal.validacionNullInput();
+        conversorPrincipal.llamarConvertidor();
     }
 
     /**
@@ -124,8 +124,9 @@ public class Principal {
      */
     private void salir() {
         VentanaContunuar continuar = new VentanaContunuar();
-        if (!continuar.validarSalir()) {
+        while (!continuar.validarSalir()) {
             llamadas();
+            new VentanaContunuar();
         }
     }
 
